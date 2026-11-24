@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exclusão de Conta — Agenda Magnu’s</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Work Sans", sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      line-height: 1.75;
+    }
+    header {
+      background: #0b1326;
+      border-bottom: 2px solid #d4af37;
+      padding: 16px 20px;
+    }
+    .nav-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand { color: #ffffff; font-weight: 800; text-decoration: none; font-size: 18px; }
+    .brand span { color: #f5c542; }
+    nav { display: flex; flex-wrap: wrap; gap: 20px; }
+    nav a { color: #dbe4f3; text-decoration: none; font-size: 14px; font-weight: 600; }
+    nav a.active, nav a:hover { color: #f5c542; text-decoration: underline; text-underline-offset: 4px; }
+
+    .hero {
+      background: #10182b;
+      color: #ffffff;
+      text-align: center;
+      padding: 52px 20px;
+    }
+    .badge {
+      display: inline-block;
+      border: 1px solid #d4af37;
+      color: #f5c542;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .hero h1 { font-size: clamp(26px, 4vw, 34px); margin-bottom: 10px; }
+    .hero p { color: #cbd5e1; font-size: 15px; }
+
+    main { max-width: 760px; margin: 0 auto; padding: 48px 20px 64px; }
+    section { padding: 24px 0; border-bottom: 1px solid #e5e7eb; }
+    section:first-child { padding-top: 0; }
+    section:last-child { border-bottom: none; }
+    h2 { color: #0b1326; font-size: 20px; margin-bottom: 12px; }
+    ol, ul { padding-left: 22px; margin-top: 8px; }
+    li { margin-bottom: 8px; }
+    a.inline { color: #b45309; font-weight: 600; }
+    .alert-box {
+      background: #fffbeb;
+      border: 1px solid #f59e0b;
+      border-left: 4px solid #d97706;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-top: 16px;
+      color: #78350f;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #0b1326;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 13px;
+    }
+    footer a { color: #f5c542; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-wrap">
+      <a href="index.html" class="brand">Agenda <span>Magnu’s</span></a>
+      <nav aria-label="Navegação legal">
+        <a href="index.html">Início</a>
+        <a href="privacidade.html">Política de Privacidade</a>
+        <a href="exclusao.html" class="active">Exclusão de Conta</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <span class="badge">DOCUMENTO LEGAL</span>
+    <h1>Exclusão de Conta — Agenda Magnu’s</h1>
+    <p>Saiba como solicitar a exclusão definitiva da sua conta e de todos os seus dados</p>
+    <p style="margin-top: 6px; font-size: 13px; color: #94a3b8;">Última atualização: novembro de 2026</p>
+  </div>
+
+  <main>
+    <section>
+      <h2>1. Como excluir sua conta pelo aplicativo</h2>
+      <ol>
+        <li>Abra o aplicativo <strong>Agenda Magnu’s</strong> no seu dispositivo.</li>
+        <li>Acesse <strong>Configurações</strong> no menu principal.</li>
+        <li>Toque em <strong>Excluir minha conta</strong>.</li>
+        <li>Confirme a exclusão definitiva.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>2. Solicitação por e-mail ou WhatsApp (sem o app instalado)</h2>
+      <p>Caso já tenha desinstalado o aplicativo ou prefira atendimento direto, envie uma solicitação informando o e-mail Google usado no login:</p>
+      <ul>
+        <li><strong>E-mail:</strong> <a class="inline" href="mailto:magnusdev.2000@gmail.com?subject=Exclus%C3%A3o%20de%20Conta">magnusdev.2000@gmail.com</a> (assunto: <em>Exclusão de Conta</em>)</li>
+        <li><strong>WhatsApp oficial:</strong> <a class="inline" href="https://wa.me/5547988330893?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20a%20exclus%C3%A3o%20da%20minha%20conta%20no%20Agenda%20Magnus." target="_blank" rel="noopener">+55 47 98833-0893</a></li>
+      </ul>
+      <p style="margin-top: 8px;">A exclusão definitiva é concluída em até <strong>7 dias úteis</strong> com confirmação no e-mail do solicitante.</p>
+    </section>
+
+    <section>
+      <h2>3. Dados excluídos permanentemente</h2>
+      <ul>
+        <li>Conta de autenticação vinculada ao Login Google (Firebase Authentication);</li>
+        <li>Dados de perfil (nome, e-mail, telefone e Chave PIX);</li>
+        <li>Notas, lembretes, hábitos e anexos;</li>
+        <li>Clientes e registros do Plano de Ação;</li>
+        <li>Registros do Plano Financeiro e do Controle de Caixa (locais e sincronizados no Cloud Firestore).</li>
+      </ul>
+      <p style="margin-top: 12px;"><strong>Atenção:</strong> a exclusão é permanente e irreversível.</p>
+    </section>
+
+    <section>
+      <h2>4. Aviso importante sobre Assinaturas na Google Play</h2>
+      <div class="alert-box">
+        <strong>Importante:</strong> excluir sua conta ou desinstalar o aplicativo <strong>não cancela automaticamente</strong> assinaturas ativas contratadas pela Google Play Store. Para evitar cobranças futuras, cancele sua assinatura diretamente em <strong>Google Play Store &gt; Pagamentos e assinaturas &gt; Assinaturas</strong>.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Magnu’s Tech (AVIZ &amp; MAGNO LTDA) — Todos os direitos reservados.</p>
+    <p style="margin-top: 6px;"><a href="mailto:magnusdev.2000@gmail.com">magnusdev.2000@gmail.com</a> • <a href="privacidade.html">Política de Privacidade</a></p>
+  </footer>
+</body>
+</html>
