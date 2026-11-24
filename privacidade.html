@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade — Agenda Magnu’s</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Work Sans", sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      line-height: 1.75;
+    }
+    header {
+      background: #0b1326;
+      border-bottom: 2px solid #d4af37;
+      padding: 16px 20px;
+    }
+    .nav-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand { color: #ffffff; font-weight: 800; text-decoration: none; font-size: 18px; }
+    .brand span { color: #f5c542; }
+    nav { display: flex; flex-wrap: wrap; gap: 20px; }
+    nav a { color: #dbe4f3; text-decoration: none; font-size: 14px; font-weight: 600; }
+    nav a.active, nav a:hover { color: #f5c542; text-decoration: underline; text-underline-offset: 4px; }
+
+    .hero {
+      background: #10182b;
+      color: #ffffff;
+      text-align: center;
+      padding: 52px 20px;
+    }
+    .badge {
+      display: inline-block;
+      border: 1px solid #d4af37;
+      color: #f5c542;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .hero h1 { font-size: clamp(26px, 4vw, 34px); margin-bottom: 10px; }
+    .hero p { color: #cbd5e1; font-size: 15px; }
+
+    main { max-width: 760px; margin: 0 auto; padding: 48px 20px 64px; }
+    section { padding: 24px 0; border-bottom: 1px solid #e5e7eb; }
+    section:first-child { padding-top: 0; }
+    section:last-child { border-bottom: none; }
+    h2 { color: #0b1326; font-size: 20px; margin-bottom: 10px; }
+    p + p { margin-top: 10px; }
+    ul { padding-left: 22px; margin-top: 8px; }
+    li { margin-bottom: 6px; }
+    a.inline { color: #b45309; font-weight: 600; }
+
+    footer {
+      background: #0b1326;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 13px;
+    }
+    footer a { color: #f5c542; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-wrap">
+      <a href="index.html" class="brand">Agenda <span>Magnu’s</span></a>
+      <nav aria-label="Navegação legal">
+        <a href="index.html">Início</a>
+        <a href="privacidade.html" class="active">Política de Privacidade</a>
+        <a href="exclusao.html">Exclusão de Conta</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <span class="badge">DOCUMENTO LEGAL</span>
+    <h1>Política de Privacidade — Agenda Magnu’s</h1>
+    <p>Aplicativo de agenda, gestão de clientes, notas e controle financeiro</p>
+    <p style="margin-top: 6px; font-size: 13px; color: #94a3b8;">Última atualização: novembro de 2026</p>
+  </div>
+
+  <main>
+    <section>
+      <h2>1. Responsável pelo Aplicativo</h2>
+      <p>O aplicativo <strong>Agenda Magnu’s</strong> é desenvolvido e mantido por <strong>Magnu’s Tech / AVIZ &amp; MAGNO LTDA</strong>.</p>
+      <p>E-mail oficial: <a class="inline" href="mailto:magnusdev.2000@gmail.com">magnusdev.2000@gmail.com</a> | WhatsApp de suporte: +55 47 98833-0893.</p>
+    </section>
+
+    <section>
+      <h2>2. Informações que o Usuário Pode Salvar</h2>
+      <p>O usuário pode registrar voluntariamente no aplicativo:</p>
+      <ul>
+        <li>Notas, lembretes, compromissos e hábitos recorrentes;</li>
+        <li>Cadastro de clientes e registros do Plano de Ação;</li>
+        <li>Registros do Plano Financeiro (crédito, parcelas e pagamentos) e do Controle de Caixa;</li>
+        <li>Fotos de comprovantes e recibos anexados às notas;</li>
+        <li>Dados de perfil (nome, e-mail, telefone e Chave PIX opcional).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Armazenamento Local (Offline-First) e Nuvem Segura (Firebase)</h2>
+      <p>O Agenda Magnu’s opera em arquitetura <strong>Offline-First</strong> com banco de dados local criptografado (Room / SQLCipher) no dispositivo do usuário.</p>
+      <p>Para identificação da conta, validação do plano ativo e proteção contra perda de dados, o aplicativo utiliza <strong>Login com Google (Firebase Authentication)</strong> e sincronização segura em nuvem via <strong>Google Cloud Firestore</strong>, mantendo os dados vinculados exclusivamente ao identificador autenticado do usuário.</p>
+    </section>
+
+    <section>
+      <h2>4. Permissões do Dispositivo</h2>
+      <ul>
+        <li><strong>Câmera e Galeria:</strong> utilizadas exclusivamente quando o usuário opta por anexar fotos de recibos ou comprovantes (comprimidas localmente).</li>
+        <li><strong>Contatos (Agenda do Celular):</strong> utilizada estritamente sob demanda do usuário para importar nome e telefone de um cliente específico. O aplicativo nunca copia, varre ou envia a lista completa de contatos.</li>
+        <li><strong>Microfone (Entrada de Voz):</strong> acionado apenas manualmente pelo usuário para ditar textos nas notas.</li>
+        <li><strong>Notificações:</strong> utilizadas apenas para lembretes de compromissos, hábitos e régua de cobrança configurados pelo usuário. Não enviamos notificações publicitárias.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Assinaturas, Pagamentos e Chave PIX</h2>
+      <p>As assinaturas de planos pagos (Essencial e PRO) dentro do aplicativo são processadas exclusivamente pela <strong>Google Play Store (Google Play Billing)</strong>. O Agenda Magnu’s não coleta nem armazena números de cartão de crédito ou dados bancários.</p>
+      <p>A Chave PIX informada opcionalmente nas configurações é usada exclusivamente para gerar o código “PIX Copia e Cola” nas mensagens de cobrança enviadas pelo próprio usuário via WhatsApp.</p>
+    </section>
+
+    <section>
+      <h2>6. Localização, Rastreamento e Compartilhamento</h2>
+      <p>Não há coleta automática de GPS nem rastreamento em tempo real. O aplicativo não utiliza redes de anúncios de terceiros e <strong>não vende, aluga ou compartilha</strong> dados pessoais ou financeiros com terceiros para fins comerciais.</p>
+    </section>
+
+    <section>
+      <h2>7. Segurança da Informação</h2>
+      <p>Os dados contam com criptografia no banco local, transmissão segura via HTTPS/TLS para os servidores do Google Firebase e suporte opcional a bloqueio do aplicativo por PIN ou biometria no aparelho.</p>
+    </section>
+
+    <section>
+      <h2>8. Direitos do Usuário e Exclusão de Conta (LGPD e Google Play)</h2>
+      <p>Você pode solicitar a qualquer momento acesso, correção ou exclusão definitiva da sua conta e de todos os dados sincronizados na nuvem. Consulte o passo a passo completo na página <a class="inline" href="exclusao.html">Exclusão de Conta</a> ou envie um e-mail para <a class="inline" href="mailto:magnusdev.2000@gmail.com">magnusdev.2000@gmail.com</a> (prazo de atendimento: até 7 dias úteis).</p>
+    </section>
+
+    <section>
+      <h2>9. Menores de Idade</h2>
+      <p>O Agenda Magnu’s não é direcionado a crianças. O uso por menores de idade deve ocorrer sob orientação de um responsável legal.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Magnu’s Tech (AVIZ &amp; MAGNO LTDA) — Todos os direitos reservados.</p>
+    <p style="margin-top: 6px;"><a href="mailto:magnusdev.2000@gmail.com">magnusdev.2000@gmail.com</a> • <a href="exclusao.html">Exclusão de Conta</a></p>
+  </footer>
+</body>
+</html>
