@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b1a">
+  <title>Agenda Magnu’s — O app de quem trabalha por conta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070b1a;
+      --bg-alt: #10182b;
+      --panel: #151d30;
+      --line: #2a344d;
+      --gold: #f5c542;
+      --gold-dark: #d4af37;
+      --green: #22c55e;
+      --red: #ef5350;
+      --text: #f5f8ff;
+      --muted: #aab7ca;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Work Sans", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .shell { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .section-pad { padding-block: 84px; }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    h1, h2, h3 { letter-spacing: -0.03em; line-height: 1.15; }
+    .body-copy { color: var(--muted); font-size: 16px; line-height: 1.7; }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7, 11, 26, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 18px;
+      gap: 20px;
+    }
+    .brand {
+      font-size: 20px;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .brand span { color: var(--gold); }
+    .desktop-nav { display: flex; align-items: center; gap: 24px; }
+    .nav-link {
+      color: #ced8e7;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--gold); }
+    .menu-btn {
+      display: none;
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .mobile-links {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      padding-bottom: 20px;
+    }
+    .mobile-links.open { display: flex; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.2s, border-color 0.2s;
+      border: 1px solid transparent;
+      text-align: center;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-gold { background: var(--gold); color: #0b101d; }
+    .btn-gold:hover { opacity: 0.92; }
+    .btn-outline { background: var(--panel); color: var(--text); border-color: #41506e; }
+    .btn-outline:hover { border-color: var(--gold); }
+    .btn-full { width: 100%; }
+
+    /* Hero */
+    .hero {
+      background: radial-gradient(circle at 78% 40%, #1d2842 0%, #0d1428 38%, #070b1a 72%);
+      padding-block: 72px 88px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 52px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 4.5vw, 54px);
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .hero-trust {
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* Phone Mockup */
+    .phone-wrap { display: flex; justify-content: center; }
+    .phone {
+      width: 292px;
+      padding: 12px;
+      border: 4px solid #3c4a66;
+      border-radius: 36px;
+      background: #090e1c;
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55);
+    }
+    .screen {
+      border-radius: 26px;
+      background: #101727;
+      border: 1px solid rgba(245, 197, 66, 0.25);
+      padding: 22px 16px;
+    }
+    .screen-top { font-size: 11px; font-weight: 800; color: var(--gold); letter-spacing: 0.1em; }
+    .screen-heading { font-size: 20px; font-weight: 800; margin-top: 8px; }
+    .screen-sub { font-size: 12px; color: var(--muted); margin-bottom: 18px; }
+    .mock-card {
+      background: #182238;
+      border: 1px solid #2b3854;
+      border-left: 4px solid var(--gold);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .mock-card.green { border-left-color: var(--green); }
+    .mock-card strong { display: block; font-size: 13px; margin-bottom: 4px; }
+    .mock-card span { display: block; font-size: 11px; color: var(--muted); }
+
+    /* Pain Section */
+    .pain-section { background: var(--bg-alt); }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 32px;
+    }
+    .pain-card {
+      background: #141c2f;
+      border: 1px solid #2c354f;
+      border-top: 3px solid var(--red);
+      border-radius: 14px;
+      padding: 22px;
+    }
+    .pain-card h3 { font-size: 17px; margin-bottom: 8px; color: var(--text); }
+    .pain-card p { font-size: 14px; color: var(--muted); }
+
+    /* Grids */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .card h3 { font-size: 18px; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: var(--muted); }
+    .icon-badge {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(245, 197, 66, 0.14);
+      color: var(--gold);
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    /* Plans */
+    .plans-section { background: var(--bg-alt); }
+    .urgency-banner {
+      background: rgba(245, 197, 66, 0.12);
+      border: 1px solid rgba(245, 197, 66, 0.45);
+      color: var(--gold);
+      border-radius: 12px;
+      padding: 14px 18px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin: 28px auto 32px;
+      max-width: 780px;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+    .plan-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .plan-card.pro {
+      border: 2px solid var(--gold);
+      background: linear-gradient(180deg, #1b2236 0%, #12192b 100%);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.4);
+    }
+    .plan-badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      background: rgba(245, 197, 66, 0.16);
+      color: var(--gold);
+    }
+    .plan-card.pro .plan-badge { background: var(--gold); color: #0b101d; }
+    .plan-name { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+    .price-old { font-size: 13px; color: var(--muted); }
+    .price-old s { color: var(--red); font-weight: 700; }
+    .price-main { font-size: 34px; font-weight: 800; margin: 4px 0; color: var(--text); }
+    .plan-card.pro .price-main { color: var(--gold); }
+    .price-main span { font-size: 15px; font-weight: 600; color: var(--muted); }
+    .price-note { font-size: 12px; color: var(--muted); margin-bottom: 20px; min-height: 36px; }
+    .plan-list { list-style: none; display: grid; gap: 11px; margin-bottom: 26px; flex: 1; }
+    .plan-list li { display: flex; gap: 9px; font-size: 14px; color: #dbe4f3; }
+    .check { color: var(--green); font-weight: 800; flex: none; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding-block: 40px;
+      background: #050814;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+    }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .footer-links a { color: #d3deee; text-decoration: underline; text-underline-offset: 4px; }
+    .footer-links a:hover { color: var(--gold); }
+
+    @media (max-width: 900px) {
+      .hero-grid, .pain-grid, .plans-grid, .grid-3 { grid-template-columns: 1fr; }
+      .desktop-nav { display: none; }
+      .menu-btn { display: inline-block; }
+      .section-pad { padding-block: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell nav-bar">
+      <a href="#inicio" class="brand">Agenda <span>Magnu’s</span></a>
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="#para-quem" class="nav-link">Para quem é</a>
+        <a href="#recursos" class="nav-link">Como ajuda</a>
+        <a href="#planos" class="nav-link">Planos</a>
+        <a href="privacidade.html" class="nav-link">Política de Privacidade</a>
+        <a href="exclusao.html" class="nav-link">Exclusão de Conta</a>
+      </nav>
+      <button id="menu-toggle" class="menu-btn" type="button" aria-expanded="false">Menu ☰</button>
+    </div>
+    <nav id="mobile-links" class="shell mobile-links" aria-label="Navegação mobile">
+      <a href="#para-quem" class="nav-link">Para quem é</a>
+      <a href="#recursos" class="nav-link">Como ajuda</a>
+      <a href="#planos" class="nav-link">Planos</a>
+      <a href="privacidade.html" class="nav-link">Política de Privacidade</a>
+      <a href="exclusao.html" class="nav-link">Exclusão de Conta</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Feito para Autônomos, MEIs e quem trabalha por conta</p>
+          <h1>Chega de perder dinheiro por falta de controle. <span>Organize clientes, vendas e cobranças</span> direto no celular.</h1>
+          <p class="body-copy">
+            Aposente o caderno de fiado e as anotações soltas no WhatsApp. Com o Agenda Magnu’s você sabe exatamente quem te deve, cobra com educação já mandando o PIX e vê quanto sobrou no bolso no fim do mês — até sem internet.
+          </p>
+          <div class="hero-actions">
+            <a href="#planos" class="btn btn-gold">Ver oferta de lançamento</a>
+            <a href="https://wa.me/5547988330893?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Agenda%20Magnus." target="_blank" rel="noopener" class="btn btn-outline">Tirar dúvida no WhatsApp</a>
+          </div>
+          <div class="hero-trust">
+            <span>✓ Simples de mexer</span>
+            <span>✓ Funciona até sem internet</span>
+            <span>✓ Comece grátis</span>
+          </div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="phone" aria-label="Prévia do aplicativo Agenda Magnu's">
+            <div class="screen">
+              <div class="screen-top">AGENDA MAGNU’S</div>
+              <div class="screen-heading">Seu negócio na mão</div>
+              <div class="screen-sub">Tudo anotado, nada esquecido</div>
+
+              <div class="mock-card">
+                <strong>Dona Maria • Falta R$ 150,00</strong>
+                <span>Toque para cobrar no WhatsApp já com seu PIX</span>
+              </div>
+              <div class="mock-card green">
+                <strong>Hora de vender de novo!</strong>
+                <span>Cliente pagou certinho e está pronto para novo pedido</span>
+              </div>
+              <div class="mock-card">
+                <strong>Seu Caixa do Mês</strong>
+                <span>Veja o que entrou, o que saiu e seu lucro de verdade</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="para-quem" class="section-pad pain-section">
+      <div class="shell">
+        <p class="eyebrow">Você passa por isso no dia a dia?</p>
+        <h2 style="font-size: clamp(24px, 3.2vw, 36px); max-width: 720px;">
+          Quem trabalha sozinho já tem coisa demais na cabeça.
+        </h2>
+        <div class="pain-grid">
+          <article class="pain-card">
+            <h3>“Trabalhei o mês todo e não sei onde o dinheiro foi”</h3>
+            <p>Misturar conta pessoal com a do negócio e não anotar o que entra e sai faz seu lucro desaparecer sem você perceber.</p>
+          </article>
+          <article class="pain-card">
+            <h3>“Tenho vergonha de cobrar quem me deve”</h3>
+            <p>Você vende no fiado ou parcelado, esquece a data do vencimento e fica sem jeito de mandar mensagem pedindo o pagamento.</p>
+          </article>
+          <article class="pain-card">
+            <h3>“Anoto em papel, no WhatsApp e acabo esquecendo”</h3>
+            <p>Pedido perdido, cliente sem retorno e compromisso esquecido custam caro — e fazem você perder vendas que já eram suas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="recursos" class="section-pad">
+      <div class="shell">
+        <p class="eyebrow">Como o Agenda Magnu’s resolve na prática</p>
+        <h2 style="font-size: clamp(26px, 3.2vw, 38px); max-width: 720px; margin-bottom: 12px;">
+          Tudo o que você precisa para vender mais, cobrar sem vergonha e sobrar dinheiro no bolso.
+        </h2>
+        <p class="body-copy" style="max-width: 660px;">
+          Sem planilhas complicadas. Em poucos toques você organiza seu dia e profissionaliza o seu atendimento.
+        </p>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon-badge">📝</div>
+            <h3>Anotações e Lembretes</h3>
+            <p>Anote pedidos, recados e tarefas do dia com alarme para não esquecer mais nenhum cliente ou compromisso — mesmo sem internet.</p>
+          </article>
+          <article class="card">
+            <div class="icon-badge">🤝</div>
+            <h3>Acompanhamento de Clientes</h3>
+            <p>Saiba com quem você precisa falar hoje, acompanhe orçamentos e seja avisado antes do vencimento para nunca levar calote por esquecimento.</p>
+          </article>
+          <article class="card">
+            <div class="icon-badge">📒</div>
+            <h3>Fim do Caderno de Fiado</h3>
+            <p>Controle vendas parceladas, anote pagamentos parciais (o cliente pagou só uma parte? Fica registrado!) e saiba a hora certa de oferecer de novo.</p>
+          </article>
+          <article class="card">
+            <div class="icon-badge">💰</div>
+            <h3>Dinheiro no Bolso (Caixa)</h3>
+            <p>Anote tudo o que entra e tudo o que sai em segundos. No fim do mês você enxerga com clareza quanto realmente lucrou.</p>
+          </article>
+          <article class="card">
+            <div class="icon-badge">⚡</div>
+            <h3>Cobrança Educada com PIX</h3>
+            <p>O app monta uma mensagem simpática no WhatsApp já com o seu PIX Copia e Cola no valor exato. O cliente paga na hora e você não passa vergonha.</p>
+          </article>
+          <article class="card">
+            <div class="icon-badge">📷</div>
+            <h3>Recibos sem Travar o Celular</h3>
+            <p>Tire foto de comprovantes, notas e pedidos e guarde tudo organizado. O app deixa a foto levinha para não lotar a memória do seu celular.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="planos" class="section-pad plans-section">
+      <div class="shell">
+        <div style="text-align: center; max-width: 740px; margin-inline: auto;">
+          <p class="eyebrow">Planos que cabem no seu bolso</p>
+          <h2 style="font-size: clamp(26px, 3.4vw, 40px); margin-bottom: 12px;">
+            Uma única cobrança que você não esquece já paga o app o ano inteiro
+          </h2>
+          <p class="body-copy">
+            Comece de graça hoje ou aproveite o valor especial de lançamento.
+          </p>
+        </div>
+
+        <div class="urgency-banner">
+          🔥 OFERTA DE LANÇAMENTO • VAGAS LIMITADAS AOS 100 PRIMEIROS ASSINANTES
+        </div>
+
+        <div class="plans-grid">
+          <!-- Básico -->
+          <article class="plan-card">
+            <span class="plan-badge">Para testar e começar</span>
+            <h3 class="plan-name">Plano Básico</h3>
+            <div class="price-old">Sem mensalidade</div>
+            <div class="price-main">Gratuito</div>
+            <p class="price-note">Para sair do papel hoje mesmo e sentir a diferença na sua rotina.</p>
+            <ul class="plan-list">
+              <li><span class="check">✓</span><span>Agenda completa para notas e compromissos</span></li>
+              <li><span class="check">✓</span><span>Cadastro básico de clientes</span></li>
+              <li><span class="check">✓</span><span>Controle simples do que entra e sai</span></li>
+              <li><span class="check">✓</span><span>Organize em até 2 categorias</span></li>
+              <li><span class="check">✓</span><span>Guarde fotos de recibos sem travar o celular</span></li>
+            </ul>
+            <a href="https://wa.me/5547988330893?text=Ol%C3%A1!%20Quero%20come%C3%A7ar%20com%20o%20Agenda%20Magnus%20Gratuito." target="_blank" rel="noopener" class="btn btn-outline btn-full">Começar Grátis</a>
+          </article>
+
+          <!-- Essencial -->
+          <article class="plan-card">
+            <span class="plan-badge">🎯 OFERTA DE LANÇAMENTO • 62% OFF</span>
+            <h3 class="plan-name">Plano Essencial</h3>
+            <div class="price-old">De <s>R$ 65,99</s> por apenas</div>
+            <div class="price-main">R$ 24,99<span>/mês</span></div>
+            <p class="price-note">Preço promocional garantido por 1 ano (12 meses). Após esse período, renovação pelo valor padrão.</p>
+            <ul class="plan-list">
+              <li><span class="check">✓</span><span>Tudo o que tem no plano Gratuito</span></li>
+              <li><span class="check">✓</span><span>Encontre qualquer cliente ou conta em segundos</span></li>
+              <li><span class="check">✓</span><span>Organize seu negócio em até 6 categorias</span></li>
+              <li><span class="check">✓</span><span>Aviso toda manhã do que você tem para receber e fazer no dia</span></li>
+            </ul>
+            <a href="https://wa.me/5547988330893?text=Ol%C3%A1!%20Quero%20garantir%20o%20Plano%20Essencial%20na%20oferta%20de%20R%24%2024%2C99." target="_blank" rel="noopener" class="btn btn-outline btn-full">Garantir Essencial por R$ 24,99</a>
+          </article>
+
+          <!-- PRO -->
+          <article class="plan-card pro">
+            <span class="plan-badge">👑 PRIMEIROS 100 ASSINANTES • 34% OFF</span>
+            <h3 class="plan-name">Plano PRO</h3>
+            <div class="price-old">Valor pós-lançamento: <s>R$ 99,99</s></div>
+            <div class="price-main">R$ 65,99<span>/mês</span></div>
+            <p class="price-note">Condição exclusiva para os 100 primeiros assinantes (12 meses). Cancele quando quiser.</p>
+            <ul class="plan-list">
+              <li><span class="check">✓</span><span>Tudo do Essencial, sem NENHUM limite</span></li>
+              <li><span class="check">✓</span><span>Ligue ou chame o cliente no WhatsApp e Instagram em 1 toque</span></li>
+              <li><span class="check">✓</span><span>Cobrança pronta no WhatsApp já com seu PIX Copia e Cola</span></li>
+              <li><span class="check">✓</span><span>Acesso Exclusivo à Comunidade VIP (Foco nos 100k)</span></li>
+              <li><span class="check">✓</span><span>Categorias livres e ilimitadas do seu jeito</span></li>
+              <li><span class="check">✓</span><span>Suporte VIP direto no WhatsApp com a nossa equipe</span></li>
+            </ul>
+            <a href="https://wa.me/5547988330893?text=Ol%C3%A1!%20Quero%20ser%20PRO%20no%20Agenda%20Magnus%20na%20oferta%20dos%20100%20primeiros%20por%20R%24%2065%2C99." target="_blank" rel="noopener" class="btn btn-gold btn-full">Quero ser PRO por R$ 65,99</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <div>
+        <strong style="color: var(--text);">Agenda Magnu’s</strong> • © 2026 Magnu’s Tech (AVIZ &amp; MAGNO LTDA)<br>
+        E-mail: <a href="mailto:magnusdev.2000@gmail.com">magnusdev.2000@gmail.com</a> • WhatsApp: +55 47 98833-0893
+      </div>
+      <nav class="footer-links" aria-label="Links legais">
+        <a href="#inicio">Início</a>
+        <a href="privacidade.html">Política de Privacidade</a>
+        <a href="exclusao.html">Exclusão de Conta</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menu-toggle');
+    const links = document.getElementById('mobile-links');
+    btn.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  </script>
+</body>
+</html>
