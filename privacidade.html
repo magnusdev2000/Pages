@@ -106,6 +106,7 @@
       <p>O usuário pode registrar voluntariamente no aplicativo:</p>
       <ul>
         <li>Notas, lembretes, compromissos e hábitos recorrentes;</li>
+        <li>Dados de perfil (nome, sobrenome, e-mail, telefone, localização informada manualmente — Estado/UF, cidade e bairro — e Chave PIX opcional).</li>
         <li>Cadastro de clientes e registros do Plano de Ação;</li>
         <li>Registros do Plano Financeiro (crédito, parcelas e pagamentos) e do Controle de Caixa;</li>
         <li>Fotos de comprovantes e recibos anexados às notas;</li>
@@ -116,6 +117,7 @@
     <section>
       <h2>3. Armazenamento Local (Offline-First) e Nuvem Segura (Firebase)</h2>
       <p>O Agenda Magnu’s opera em arquitetura <strong>Offline-First</strong> com banco de dados local criptografado (Room / SQLCipher) no dispositivo do usuário.</p>
+      <p>Para fins de suporte técnico, estabilidade e melhoria do serviço, o aplicativo registra eventos técnicos mínimos de atividade (como abertura do aplicativo, sincronização de backup, interesse em planos, versão do aplicativo e modelo do dispositivo), vinculados ao identificador da conta. <strong>Essa telemetria técnica nunca coleta o conteúdo privado das suas notas, dados de terceiros ou valores financeiros.</strong></p>
       <p>Para identificação da conta, validação do plano ativo e proteção contra perda de dados, o aplicativo utiliza <strong>Login com Google (Firebase Authentication)</strong> e sincronização segura em nuvem via <strong>Google Cloud Firestore</strong>, mantendo os dados vinculados exclusivamente ao identificador autenticado do usuário.</p>
     </section>
 
